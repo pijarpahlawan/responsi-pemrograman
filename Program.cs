@@ -8,7 +8,7 @@ namespace ProjectPenjualan
     class Program
     {
         // deklarasi objek collection untuk menampung objek penjualan
-        public static List<Penjualan> list = new List<Penjualan>();
+        static List<Penjualan> daftarPenjualan = new List<Penjualan>();
 
         static void Main(string[] args)
         {
@@ -43,8 +43,7 @@ namespace ProjectPenjualan
         static void TampilMenu()
         {
             Console.Clear();
-            Console.WriteLine("Pilihan menu:");
-            Console.WriteLine();
+            Console.WriteLine("Pilih Menu Aplikasi\n");
             Console.WriteLine("1. Tambah Penjualan");
             Console.WriteLine("2. Tampilkan Penjualan");
             Console.WriteLine("3. Keluar");
@@ -52,33 +51,40 @@ namespace ProjectPenjualan
 
         static void TambahPenjualan()
         {
+            Penjualan data = new Penjualan();
+
             Console.Clear();
-            // PERINTAH: lengkapi kode untuk menambahkan penjualan ke dalam collection
+
             Console.WriteLine("Tambah Data Penjualan\n");
             Console.Write("Nota: ");
-            Penjualan pjl = new Penjualan();
-            pjl.Nota = Console.ReadLine();
+            data.Nota = Console.ReadLine();
             Console.Write("Tanggal: ");
-            pjl.Tanggal = Console.ReadLine();
-            Console.Write("Customer: ");
-            pjl.Customer = Console.ReadLine();
+            data.Tanggal = Console.ReadLine();
+            Console.Write("Custormer: ");
+            data.Customer = Console.ReadLine();
             Console.Write("Jenis [T/K]: ");
-            pjl.Jenis = Console.ReadLine() == "T" ? "Tunai" : "Kredit";
+            data.Jenis = Console.ReadLine() == "T" ? "Tunai" : "Kredit";
             Console.Write("Total Nota: ");
-            pjl.TotalNota = Console.ReadLine();
-            list.Add(pjl);
+            data.Total = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("\nTekan ENTER untuk kembali ke menu");
             Console.ReadKey();
+
+            daftarPenjualan.Add(data);
         }
 
         static void TampilPenjualan()
         {
-            Console.Clear();
-            int counter = 0;
+            int number = 1;
 
-            foreach (Penjualan pj in list)
+            Console.Clear();
+
+            Console.WriteLine("Data Penjualan\n");
+
+            foreach (Penjualan data in daftarPenjualan)
             {
-                Console.WriteLine($"{++counter}. {pj.Nota}, {pj.Tanggal}, {pj.Customer}, {pj.Jenis}, {pj.TotalNota}");
+                Console.WriteLine($"{number}. {data.Nota}, {data.Tanggal}, {data.Customer}, {data.Jenis}, {data.Total}");
+                number++;
             }
 
             Console.WriteLine("\nTekan enter untuk kembali ke menu");

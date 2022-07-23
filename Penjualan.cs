@@ -11,6 +11,6 @@ namespace ProjectPenjualan
         public string Tanggal { get; set; }
         public string Customer { get; set; }
         public string Jenis { get; set; }
-        public string TotalNota { get; set; }
+        public int Total { get; set; }
     }
 }
